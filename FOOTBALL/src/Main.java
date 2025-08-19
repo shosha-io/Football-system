@@ -34,7 +34,6 @@ public class Main {
 
         frame.add(panel, BorderLayout.CENTER);
 
-        // === Actions ===
         addLeagueBtn.addActionListener(e -> {
             String name = JOptionPane.showInputDialog(frame, "Enter league name:");
             if (name != null && !name.isEmpty()) {
@@ -83,7 +82,7 @@ public class Main {
         DefaultTableModel standingsModel = new DefaultTableModel(new String[]{"Team","Points","Goals"}, 0);
         JTable standingsTable = new JTable(standingsModel);
 
-        // Load existing teams
+
         for (TEAM t : league.getTeams()) {
             teamModel.addRow(new Object[]{t.getTeamName()});
             standingsModel.addRow(new Object[]{t.getTeamName(), t.getTeam_points(), t.getTeam_goal()});
@@ -142,7 +141,7 @@ public class Main {
             }
         });
 
-        // ✅ Show only players of selected team
+   
         teamTable.getSelectionModel().addListSelectionListener(event -> {
             int row = teamTable.getSelectedRow();
             if (row >= 0 && row < league.getTeams().size()) {
@@ -223,7 +222,6 @@ public class Main {
                                     "Total tracked: " + totalTime + " mins");
                 }
 
-                // ✅ Show stats for first 2 teams
                 if (league.getTeams().size() >= 2) {
                     TEAM t1 = league.getTeams().get(0);
                     TEAM t2 = league.getTeams().get(1);
